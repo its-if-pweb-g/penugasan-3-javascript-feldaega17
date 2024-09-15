@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeldaEga Site</title>
+    <link rel="icon" href="LOGO EGA.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        /* Reset dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #000000;
+    border-bottom: 1px solid #e0e0e0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.site-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: #007BFF; /* Warna saat dihover */
+}
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+}
+
+.theme-toggle button {
+    background-color: #2c3e50;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.theme-toggle button img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        display: none; /* Hide the nav links initially */
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show nav links when active */
+    }
+
+    .theme-toggle {
+        margin-top: 10px;
+    }
+
+    .navbar-toggle {
+        display: block;
+        background-color: #2c3e50;
+        border: none;
+        color: #ffffff;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 18px;
+    }
+}
+
+/* Hide the toggle button by default */
+.navbar-toggle {
+    display: none;
+}
+
+
+        /* Header */
+        header {
+            background-color: #111;
+            color: #f4f4f4;
+            padding: 50px 0;
+            text-align: center;
+            position: relative;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), /* Cahaya pertama */
+                 0 0 20px rgba(255, 255, 255, 0.6), /* Cahaya kedua */
+                 0 0 30px rgba(255, 255, 255, 0.4); /* Cahaya ketiga */
+        }
+        
+
+        header p {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), /* Cahaya pertama */
+                 0 0 20px rgba(255, 255, 255, 0.6), /* Cahaya kedua */
+                 0 0 30px rgba(255, 255, 255, 0.4); /* Cahaya ketiga */
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        /* Profil */
+        #profile {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        #profile img {
+            border-radius: 10%;
+            max-width: 300px;
+            margin-right: 20px;
+        }
+        #profile img:hover {
+    transform: scale(1.1); /* Memperbesar gambar sebesar 10% saat di-hover */
+}
+
+        #profile-info {
+            flex: 1;
+        }
+
+        #profile-info h2 {
+            font-size: 2.5em;
+            color: #f4f4f4;
+            margin-bottom: 10px;
+        }
+
+        #profile-info p {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        /* About Me */
+        #about, #skills, #portfolio, #education, #hobbies, #movies {
+            margin-bottom: 80px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        #about h2, #skills h2, #portfolio h2, #education h2, #hobbies h2, #movies h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #f4f4f4;
+        }
+
+        #about p {
+            font-size: 1.5em;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        /* Skills */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .skills-list .skill {
+            background-color: #333;
+            color: #f4f4f4;
+            padding: 15px 25px;
+            border-radius: 5px;
+            font-size: 1.3em;
+            flex-basis: calc(33.333% - 10px);
+            text-align: center;
+            margin-bottom: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .skills-list .skill:hover {
+            background-color: #555;
+        }
+
+        /* Portfolio */
+.portfolio {
+    padding: 20px;
+}
+
+.portfolio h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000000;
+}
+
+.portfolio h5 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000000;
+}
+
+.portfolio-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Jarak antara tiap item portofolio */
+}
+
+.portfolio-item {
+    display: flex;
+    align-items: center;
+    padding: 40px;
+    border-left: 4px solid #00ff7b; /* Border vertikal di sisi kiri */
+    background-color: hsl(0, 0%, 42%);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-item img {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+.portfolio-item p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+}
+
+
+        .education {
+    margin-bottom: 20px;
+}
+
+.education-list {
+    display: flex;
+    flex-direction: column; /* Susunan vertikal */
+    gap: 20px; /* Jarak antar item */
+}
+
+.education-item {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Jarak antara logo dan teks */
+    border: none; /* Hapus border */
+    padding: 0; /* Hapus padding */
+}
+
+.education-item img {
+    width: 60px; /* Sesuaikan ukuran logo */
+    height: 60px; /* Pastikan gambar tetap persegi */
+    border-radius: 0%; /* Memberikan sudut melengkung pada logo */
+}
+
+.education-info h3 {
+    margin: 0; /* Hapus margin pada heading */
+    font-size: 1.2em; /* Sesuaikan ukuran font */
+}
+
+.education-info p {
+    margin: 0; /* Hapus margin pada paragraf */
+    font-size: 1em; /* Sesuaikan ukuran font */
+    color: #666; /* Ubah warna teks jika diperlukan */
+}
+
+
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: #f4f4f4;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1.3em;
+        }
+
+        /* Animasi */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .profile {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile img {
+                margin-bottom: 20px;
+            }
+
+            .skills-list .skill,
+            .portfolio-item, .education-item, .hobbies-item, .movie-item {
+                flex-basis: 100%;
+            }
+        }
+
+        .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.skills-list {
+    display: flex;
+    gap: 20px;
+  }
+
+  .skill {
+    position: relative;
+    width: 100px;
+    height: 100px;
+  }
+
+  .skill img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .skill:hover {
+    border-color: #39ff14; /* Ganti warna garis tepi menjadi hijau neon saat di-hover */
+    box-shadow: 0 0 15px 5px #39ff14; /* Efek cahaya hijau neon saat di-hover */
+    }
+  /* Tooltip */
+  .skill .tooltip {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+  }
+
+  .skill:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+  }
+    /* Hobbies Section */
+.hobbies {
+    padding: 20px;
+    text-align: center;
+}
+
+.hobbies h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #ffffff;
+}
+
+.hobbies-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Membuat item bisa turun ke baris berikutnya jika ruang tidak cukup */
+}
+
+.hobbies-item {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    font-weight: 500;
+    color: #555;
+    flex: 1 1 150px; /* Membuat setiap item memiliki ukuran yang sama dan fleksibel */
+    max-width: 200px; /* Membatasi lebar maksimum setiap item */
+    text-align: center;
+}
+
+    .hobbies-item:hover {
+    border-color: #39ff14; /* Ganti warna garis tepi menjadi hijau neon saat di-hover */
+    box-shadow: 0 0 15px 5px #39ff14; /* Efek cahaya hijau neon saat di-hover */
+    }
+
+        /* Movies Section */
+.movies {
+    padding: 20px;
+    text-align: center;
+}
+
+.movies h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #ffffff;
+}
+
+.movies-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Membuat item bisa turun ke baris berikutnya jika ruang tidak cukup */
+}
+
+.movie-item {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    text-align: center;
+}
+
+.movie-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.movie-item p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: #555;
+}
+
+    .preview-container {
+      position: relative;
+      width: 300px;
+      height: 200px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .preview-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .preview-container:hover img {
+      transform: scale(1.1);
+    }
+
+    .preview-link {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(100%);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .preview-container:hover .preview-link {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Jarak antar elemen form */
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px; /* Jarak bawah antar elemen */
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #444;
+  color: #fff;
+}
+
+label {
+  margin-bottom: 5px; /* Jarak antara label dan input */
+  color: #fff;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.d-none {
+    display: none;
+}
+
+.bg-dark-custom {
+            background-color: #343a40 !important;
+        }
+        .text-dark-custom {
+            color: #f8f9fa !important;
+        }
+        .form-control-dark {
+            background-color: #495057;
+            color: #f8f9fa;
+            border: 1px solid #6c757d;
+        }
+        .form-control-dark:focus {
+            border-color: #ced4da;
+            box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+        }
+
+    </style>
+
+<script>
+    // Fungsi untuk menyimpan nilai input ke localStorage
+    function saveToLocalStorage(key, value) {
+        localStorage.setItem(key, value);
+    }
+
+    // Fungsi untuk mengambil nilai dari localStorage
+    function getFromLocalStorage(key) {
+        return localStorage.getItem(key) || '';
+    }
+
+    // Fungsi untuk memperbarui tampilan saat input berubah
+    function updateText() {
+        const textField = document.getElementById('textField');
+        const displayText = document.getElementById('displayText');
+        
+        // Ambil nilai dari localStorage
+        const savedText = getFromLocalStorage('textFieldValue');
+        textField.value = savedText;
+        displayText.innerText = savedText;
+        
+        // Tambahkan event listener untuk menyimpan nilai input ke localStorage
+        textField.addEventListener('input', function() {
+            saveToLocalStorage('textFieldValue', textField.value);
+            displayText.innerText = textField.value;
+        });
+    }
+
+    window.onload = updateText;
+</script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="LOGO EGA.png" alt="Logo"> <!-- Ganti dengan path logo yang kamu gunakan -->
+            <span class="site-name">Felda Ega Site</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#profile">Profil</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#skills">Education</a></li>
+            <li><a href="#portfolio">Experience</a></li>
+            <li><a href="#hobbies">Hobbies</a></li>
+            <li><a href="#movies">Movies</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <h1>Felda Ega Fadhila</h1>
+        <h3>Bachelor of Informatics Engineering</h3>
+        <h5>Institut Teknologi Sepuluh Nopember</h5>
+        <p>Web Developer | UI/UX Designer | Content Creator</p>
+        <h5>*NB: Website ini sudah dideploy dengan domain <a href="http://feldaega.com" target="_blank">feldaega.com</a></h5>
+    </header>
+
+    <div class="container">
+
+        <!-- Profil -->
+        <section id="profile">
+            <img src="FOTO TERGANTENG.png" alt="Foto Profil">
+            <div class="profile-info">
+                <a href="mailto:5025231199@student.its.ac.id" target="_blank">
+                    <img src="image-removebg-preview (2).png" alt="Gmail" style="width: 24px; height: 24px;">
+                </a>
+                <a href="https://www.google.com/maps/place/Kos+BangBer/@-7.2687517,112.8000365,20.4z/data=!4m15!1m8!3m7!1s0x2dd7fbf8381ac47f:0x3027a76e352be40!2sSurabaya,+Jawa+Timur!3b1!8m2!3d-7.2574719!4d112.7520883!16zL20vMDFmNHhk!3m5!1s0x2dd7fb40aa978e31:0x3d1f8a7c0427b8ea!8m2!3d-7.2685139!4d112.8006011!16s%2Fg%2F11vl9tc90p?entry=ttu&g_ep=EgoyMDI0MDkxMS4wIKXMDSoASAFQAw%3D%3D" target="_blank">
+                    <img src="https://static.vecteezy.com/system/resources/previews/022/484/500/large_2x/google-maps-gmaps-icon-logo-symbol-free-png.png" alt="Google Maps" style="width: 24px; height: 24px;">
+                </a>
+                <a href="https://www.instagram.com/felda.ega" target="_blank">
+                    <img src="https://www.freepnglogos.com/uploads/instagram-icon-png/instagram-logo-download-computer-neon-instagram-icons-image-23.png" alt="Instagram" style="width: 24px; height: 24px;">
+                </a>
+                <a href="https://www.linkedin.com/in/felda-ega14" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" style="width: 24px; height: 24px;">
+                </a>
+            </div>
+        </section>
+
+        <!-- Tentang Saya -->
+        <section id="about">
+            <h2>Tentang Saya</h2>
+            <p>Saya seorang mahasiswa Teknik Informatika Institut Teknologi Sepuluh Nopember. Pada tahun 2024 ini saya menduduki perkuliahan saya pada tahun yang kedua. Saya senang mencari pengalaman baru dan lugas untuk beradaptasi dengan lingkungan sekitar saya. Saya memiliki kemampuan dan pengalaman yang diperlukan untuk pengorganisasian, pemecahan masalah, komunikasi yang efektif, dan kemahiran teknologi. Saya mampu bekerja secara kolaboratif dalam tim dan individu, didukung oleh kualitas seperti kejujuran, disiplin, dan tanggung jawab. Memiliki pengalaman sebagai panitia dalam berbagai peran seperti konseptor acara dan staff perizinan.</p>
+            <p>Saya senang bekerja pada proyek-proyek yang menantang dan selalu berusaha untuk memberikan hasil terbaik kepada klien. Saya percaya bahwa keterampilan teknis yang baik harus dilengkapi dengan komunikasi yang efektif dan kolaborasi yang kuat.</p>
+        </section>
+
+        <!-- Keterampilan -->
+        <section id="skills">
+            <h2>Keterampilan</h2>
+            <div class="skills-list">
+              <div class="skill">
+                <img src="https://logos-download.com/wp-content/uploads/2017/07/HTML5_badge.png" alt="HTML" title="HTML">
+                <span class="tooltip">HTML</span>
+              </div>
+              <div class="skill">
+                <img src="https://logospng.org/download/css-3/logo-css-3-2048.png" alt="CSS" title="CSS">
+                <span class="tooltip">CSS</span>
+              </div>
+              <div class="skill">
+                <img src="https://logosdownload.com/logo/javascript-logo-big.png" alt="JavaScript" title="JavaScript">
+                <span class="tooltip">JavaScript</span>
+              </div>
+              <div class="skill">
+                <img src="911_c_logo-removebg-preview.png" alt="React" title="React">
+                <span class="tooltip">C++</span>
+              </div>
+              <div class="skill">
+                <img src="https://logodownload.org/wp-content/uploads/2022/12/figma-logo-2.png" alt="UI/UX Design" title="UI/UX Design">
+                <span class="tooltip">Desain UI/UX</span>
+              </div>
+              <div class="skill">
+                <img src="https://logospng.org/download/laravel/logo-laravel-icon-1024.png" alt="Laravel" title="Laravel">
+                <span class="tooltip">Framework Laravel</span>
+              </div>
+            </div>
+          </section>
+
+        
+
+        <!-- Riwayat Pendidikan -->
+        <section id="education">
+            <h2>Riwayat Pendidikan</h2>
+            <div class="education-list">
+                <div class="education-item">
+                    <img src="https://3.bp.blogspot.com/-Em-UPiFbwwo/WBRnohyqGPI/AAAAAAAAABU/YU22rrd7d7k4-sxhh-T18jt7O6eDhYFkACK4B/s1600/SMP%2B1%2BPonorogo%2BLogo.png" alt="Logo SMP Negeri 1 Jakarta">
+                    <div class="education-info">
+                        <h3>SMP Negeri 1 Ponorogo</h3>
+                        <p>2017 - 2020</p>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <img src="https://www.dbl.id/uploads/school/13890/398-SMAN_3_TARUNA_ANGKASA_MADIUN.png" alt="Logo SMA Negeri 1 Jakarta">
+                    <div class="education-info">
+                        <h3>SMAN 3 Taruna Angkasa Jawa Timur</h3>
+                        <p>2020 - 2023</p>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <img src="logo_its-removebg-preview.png" alt="Logo Universitas Indonesia">
+                    <div class="education-info">
+                        <h3>Institut Teknologi Sepuluh Nopember</h3>
+                        <p>S1-Teknik Informatika, 2023 - Sekarang</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+
+        <!-- Portofolio -->
+        <section id="portfolio">
+            <h2>Kepanitiaan</h2>
+            <div class="portfolio-list">
+                <div class="portfolio-item">
+                    <img src="logo.png" alt="Proyek 1">
+                    <h4>MABACUP ITS 2023</h4>
+                </div>
+                <div class="portfolio-item">
+                    <img src="image-removebg-preview (1).png" alt="Proyek 2">
+                    <h4>SCHEMATICS 2024</h4>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://inilho.its.ac.id/og/logo.png" alt="Proyek 3">
+                    <h4>INI LHO ITS! 2024 X Forda Ponorogo</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hobi -->
+        <section id="hobbies">
+            <h2>Hobi</h2>
+            <div class="hobbies-list">
+                <div class="hobbies-item">Membaca Buku</div>
+                <div class="hobbies-item">Boxing</div>
+                <div class="hobbies-item">Bersepeda</div>
+            </div>
+        </section>
+
+        <!-- Top 3 Movies -->
+        <section id="movies">
+            <h2>Top 3 Movies</h2>
+            <div class="movies-list">
+                <div class="movie-item">
+                    <img src="https://wallpapercave.com/wp/rRI81mP.jpg" alt="Inception">
+                    <p>Naruto Shippuden The Movie</p>
+                </div>
+                <div class="movie-item">
+                    <img src="https://th.bing.com/th/id/OIP.Kx5x4bG4jU6hMlSLTy6DGwHaFv?rs=1&pid=ImgDetMain" alt="The Godfather">
+                    <p>Dilan 1991</p>
+                </div>
+                <div class="movie-item">
+                    <img src="https://th.bing.com/th/id/OIP.vvSm2wPRs_JaKLZIWufG9QHaFh?rs=1&pid=ImgDetMain" alt="Interstellar">
+                    <p>The Avengers:Age of Ultron</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="preview-container">
+            <h2>Karya Saya</h2>
+            <img src="mesin kasir.png" alt="Website Preview">
+            <a href="https://cashed.feldaega.com" class="preview-link">Cashier Website with Laravel</a>
+          </div>
+
+          <section id="contact" class="py-5 bg-dark text-white">
+            <div class="container">
+                <h1 class="text-center mb-4 text-white">Hubungi Saya</h1>
+                <form id="contactForm" novalidate>
+                    <div class="mb-3">
+                        <label for="name" class="form-label text-white">Nama:</label>
+                        <input type="text" class="form-control bg-secondary text-white border-0" id="name" placeholder="Masukkan nama Anda">
+                        <div class="text-danger mt-1" id="nameError"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label text-white">Email:</label>
+                        <input type="email" class="form-control bg-secondary text-white border-0" id="email" placeholder="Masukkan email Anda">
+                        <div class="text-danger mt-1" id="emailError"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label text-white">Pesan:</label>
+                        <textarea class="form-control bg-secondary text-white border-0" id="message" rows="4" placeholder="Tulis pesan Anda"></textarea>
+                        <div class="text-danger mt-1" id="messageError"></div>
+                    </div>
+                    <button type="submit" id="submitButton" class="btn btn-primary">
+                        <span id="buttonText">Kirim</span>
+                        <span id="loadingIcon" class="d-none">
+                            <i class="fa fa-spinner fa-spin"></i>
+                        </span>
+                    </button>
+                    <div id="successMessage" class="mt-3 text-success d-none">Terkirim</div>
+                </form>
+            </div>
+        </section>
+        
+        <script>
+            document.getElementById('contactForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+        
+                let isValid = true;
+        
+                document.getElementById('nameError').innerHTML = '';
+                document.getElementById('emailError').innerHTML = '';
+                document.getElementById('messageError').innerHTML = '';
+                document.getElementById('successMessage').classList.add('d-none');
+                document.getElementById('loadingIcon').classList.remove('d-none');
+                document.getElementById('buttonText').classList.add('d-none');
+        
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+        
+                if (name === '') {
+                    document.getElementById('nameError').innerHTML = 'Nama tidak boleh kosong.';
+                    isValid = false;
+                }
+        
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+                if (email === '') {
+                    document.getElementById('emailError').innerHTML = 'Email tidak boleh kosong.';
+                    isValid = false;
+                } else if (!emailPattern.test(email)) {
+                    document.getElementById('emailError').innerHTML = 'Masukkan email yang valid.';
+                    isValid = false;
+                }
+        
+                if (message === '') {
+                    document.getElementById('messageError').innerHTML = 'Pesan tidak boleh kosong.';
+                    isValid = false;
+                }
+        
+                if (isValid) {
+                    const data = {
+                        name: name,
+                        email: email,
+                        message: message
+                    };
+        
+                    fetch('https://debug.nafkhanzam.com/web-programming-e03', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data),
+                        mode: 'no-cors'
+                    })
+                    .then(data => {
+                        document.getElementById('loadingIcon').classList.add('d-none');
+                        document.getElementById('buttonText').classList.remove('d-none');
+                        document.getElementById('successMessage').classList.remove('d-none');
+                        console.log('Data yang dikirim:',data);
+                    })
+                    .catch(error => {
+                        console.error('Terjadi kesalahan:', error);
+                        document.getElementById('loadingIcon').classList.add('d-none');
+                        document.getElementById('buttonText').classList.remove('d-none');
+                    });
+                } else {
+                    document.getElementById('loadingIcon').classList.add('d-none');
+                    document.getElementById('buttonText').classList.remove('d-none');
+                }
+            });
+        </script>
+
+<section id="text-section" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Text Field and Display</h2>
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="mb-3">
+                    <label for="textField" class="form-label">Masukkan Teks:</label>
+                    <input type="text" class="form-control form-control-dark" id="textField" placeholder="Ketik di sini">
+                </div>
+                <div class="mb-3">
+                    <p id="displayText" class="form-control form-control-dark bg-dark-custom p-2 border-0">Teks akan ditampilkan di sini</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Felda Ega. Semua Hak Dilindungi.</p>
+    </footer>
+
+</body>
+</html>
